@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1587472950 source:c:\users\Моксем\desktop\lab03\histogam.cpp
+	"Head.h"
+
+1587477001 c:\users\Моксем\desktop\lab03\head.h
+	<vector>
+
+1587476184 source:c:\users\Моксем\desktop\lab03\test.cpp
+	"Head.h"
+	<cassert>
+
