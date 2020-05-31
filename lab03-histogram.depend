@@ -1,9 +1,0 @@
-# depslib dependency file v1.0
-1587477038 source:c:\users\Моксем\desktop\lab03\main.cpp
-	<iostream>
-	<vector>
-	"Head.h"
-
-1587477001 c:\users\Моксем\desktop\lab03\head.h
-	<vector>
-
