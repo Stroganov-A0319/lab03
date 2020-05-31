@@ -36,6 +36,7 @@
 			<Option target="Debug" />
 		</Unit>
 		<Unit filename="SVG.cpp" />
+		<Unit filename="SVG.h" />
 		<Unit filename="histogam.cpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>
