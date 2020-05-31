@@ -35,12 +35,10 @@
 		<Unit filename="Head.h">
 			<Option target="Debug" />
 		</Unit>
+		<Unit filename="SVG.cpp" />
 		<Unit filename="histogam.cpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>
-			<code_completion />
-			<envvars />
-			<debugger />
 			<lib_finder disable_auto="1" />
 		</Extensions>
 	</Project>

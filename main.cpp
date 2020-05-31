@@ -1,12 +1,8 @@
-#include <iostream>
-#include <vector>
 #include "Head.h"
+#include "SVG.h"
 using namespace std;
 
-struct Input {
-    vector<double> numbers;
-    size_t bin_count;
-};
+
 
 vector<double>
 input_numbers(istream& in, size_t count)
@@ -35,38 +31,12 @@ read_input(istream& in) {
 
     return data;
 }
-vector<size_t> make_histogram(vector<double> numbers, size_t bin_count, double& min, double& max)
-{
-    vector<size_t> bins(bin_count);
-    for (double number : numbers)
-    {
-        size_t bin = (size_t)((number - min) / (max - min) * bin_count);
-        if (bin == bin_count)
-        {
-            bin--;
-        }
-        bins[bin]++;
-    }
-    return bins;
-}
+
 int
 main()
 {
-    // Ввод данных
     Input input = read_input(cin);
-
-    // Обработка данных
-    double min = input.numbers[0];
-    double max = input.numbers[0];
-    find_minmax(input.numbers, min, max);
-
-    vector<size_t> bins = make_histogram(input.numbers, input.bin_count, min, max);
-    // Вывод данных
-
-
+    vector<size_t> bins = make_histogram(input);
     show_histogram_svg(bins);
-
-
-
     return 0;
 }
