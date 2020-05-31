@@ -1,6 +1,8 @@
 #ifndef HEAD_H_INCLUDED
 #define HEAD_H_INCLUDED
 #include <vector>
+#include <string>
+#include <iostream>
 
 using namespace std;
 

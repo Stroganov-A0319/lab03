@@ -3,6 +3,11 @@
 #include "Head.h"
 using namespace std;
 
+struct Input {
+    vector<double> numbers;
+    size_t bin_count;
+};
+
 vector<double>
 input_numbers(istream& in, size_t count)
 {
@@ -12,6 +17,23 @@ input_numbers(istream& in, size_t count)
         in >> result[i];
     }
     return result;
+}
+Input
+read_input(istream& in) {
+    Input data;
+
+    cerr << "Enter number count: ";
+    size_t number_count;
+    in >> number_count;
+
+    cerr << "Enter numbers: ";
+    data.numbers = input_numbers(in, number_count);
+
+    size_t bin_count;
+    cerr << "Enter column count: ";
+    in >> data.bin_count;
+
+    return data;
 }
 vector<size_t> make_histogram(vector<double> numbers, size_t bin_count, double& min, double& max)
 {
@@ -31,23 +53,14 @@ int
 main()
 {
     // Ввод данных
-    size_t number_count;
-    cerr << "Enter number count: ";
-    cin >> number_count;
-
-    cerr << "Enter numbers: ";
-    const auto numbers = input_numbers(in, number_count);
-
-    size_t bin_count;
-    cerr << "Enter column count: ";
-    cin >> bin_count;
+    Input input = read_input(cin);
 
     // Обработка данных
-    double min = numbers[0];
-    double max = numbers[0];
-    find_minmax(numbers, min, max);
+    double min = input.numbers[0];
+    double max = input.numbers[0];
+    find_minmax(input.numbers, min, max);
 
-    vector<size_t> bins = make_histogram(numbers, bin_count, min, max);
+    vector<size_t> bins = make_histogram(input.numbers, input.bin_count, min, max);
     // Вывод данных
 
 
