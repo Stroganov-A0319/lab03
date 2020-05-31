@@ -41,6 +41,13 @@ read_input(istream& in, bool prompt)
 
     return data;
 }
+write_data(void* items, size_t item_size, size_t item_count, void* ctx) {
+    // TODO: дописывать данные к буферу.
+    size_t data_size = item_size * item_count;
+    stringstream* buffer = reinterpret_cast<stringstream*>(ctx);
+    (*buffer).write(reinterpret_cast<const char*>(items), data_size);
+    return data_size;
+}
 Input
 download(const string& address) {
     stringstream buffer;
@@ -50,6 +57,8 @@ download(const string& address) {
         {
             CURLcode res;
             curl_easy_setopt(curl, CURLOPT_URL, address.c_str());
+            curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_data);
+            curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buffer);
             res = curl_easy_perform(curl);
             if (res) {
                 cerr << curl_easy_strerror(res) << endl;
