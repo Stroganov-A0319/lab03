@@ -1,5 +1,6 @@
 #include "Head.h"
 #include "SVG.h"
+#include <curl/curl.h>
 using namespace std;
 
 
@@ -42,6 +43,7 @@ read_input(istream& in, bool prompt) {
 int
 main()
 {
+    curl_global_init(CURL_GLOBAL_ALL);
     Input input = read_input(cin, true);
     vector<size_t> bins = make_histogram(input);
     show_histogram_svg(bins);
