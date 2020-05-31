@@ -1,6 +1,7 @@
 #include "Head.h"
 #include "SVG.h"
 #include <curl/curl.h>
+#include <sstream>
 using namespace std;
 
 
@@ -40,18 +41,15 @@ read_input(istream& in, bool prompt)
 
     return data;
 }
-
-int
-main(int argc, char* argv[])
-{
+Input
+download(const string& address) {
+    stringstream buffer;
     curl_global_init(CURL_GLOBAL_ALL);
-    if (argc > 1)
-    {
-        CURL *curl = curl_easy_init();
+    CURL *curl = curl_easy_init();
         if(curl)
         {
             CURLcode res;
-            curl_easy_setopt(curl, CURLOPT_URL, argv[1]);
+            curl_easy_setopt(curl, CURLOPT_URL, address.c_str());
             res = curl_easy_perform(curl);
             if (res) {
                 cerr << curl_easy_strerror(res) << endl;
@@ -59,9 +57,19 @@ main(int argc, char* argv[])
             }
             curl_easy_cleanup(curl);
         }
+    return read_input(buffer, false);
+}
+int
+main(int argc, char* argv[])
+{
+    Input input;
+
+    if (argc > 1)
+    {
+        input = download(argv[1]);
+    } else {
+        input = read_input(cin, true);
     }
-    return 0;
-    Input input = read_input(cin, true);
     vector<size_t> bins = make_histogram(input);
     show_histogram_svg(bins);
     return 0;
