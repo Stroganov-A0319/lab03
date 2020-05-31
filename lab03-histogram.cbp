@@ -31,7 +31,12 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
+			<Add directory="cURL/include" />
 		</Compiler>
+		<Linker>
+			<Add library="cURL/lib/libcurl.dll.a" />
+			<Add directory="cURL/lib" />
+		</Linker>
 		<Unit filename="Head.h">
 			<Option target="Debug" />
 		</Unit>

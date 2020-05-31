@@ -52,11 +52,12 @@ show_histogram_svg(const vector<size_t>& bins)
         cin >> IMAGE_WIDTH;
         if (IMAGE_WIDTH < 70)
             flag1 = true;
-         if (IMAGE_WIDTH > 800)
+        if (IMAGE_WIDTH > 800)
             flag2 = true;
-         if (IMAGE_WIDTH < (number_count / 3) * BLOCK_WIDTH)
+        if (IMAGE_WIDTH < (number_count / 3) * BLOCK_WIDTH)
             flag3 = true;
-    } while (!flag1 or !flag2 or !flag3);
+    }
+    while (!flag1 or !flag2 or !flag3);
     size_t max_count = 0;
     for (size_t count : bins)
     {

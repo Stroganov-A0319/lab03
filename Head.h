@@ -5,7 +5,8 @@
 #include <iostream>
 
 using namespace std;
-struct Input {
+struct Input
+{
     vector<double> numbers;
     size_t bin_count;
 };
